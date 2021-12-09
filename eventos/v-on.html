@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS - Eventos</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <p>{{ count }}</p>
+        <button v-on:click="somar">Somar +1</button>
+        <button v-on:click.once="somar">Somar +1 uma vez com '.once'</button>
+
+        <br>
+        <hr>
+        <br>
+
+        <p v-on:mousemove="mouseMove">
+            <span>MouseX: {{ mouse.x }} - MouseY: {{ mouse.y }}</span>
+            <b v-on:mousemove.stop>[Modificador de Evento '.stop']</b>
+        </p>
+
+        <br>
+        <hr>
+        <br>
+
+        <p>
+            <span>O evento nativo do href deixará de recarregar a página com o:</span>
+            <br>
+            <a href="https://www.google.com.br" v-on:click.prevent>Modificador de Evento '.prevent'</a>
+        </p>
+
+        <br>
+        <hr>
+        <br>
+
+        <input type="text" placeholder="Keyup geral!" v-on:keyup="alert('Keyup geral!')">
+        <br>
+        <input type="text" placeholder="Keyup apenas com enter!" v-on:keyup.enter="alert('Keyup apenas com enter!')">
+        <br>
+        <input type="text" placeholder="Keyup apenas com enter!" v-on:keyup.alt.enter="alert('Keyup apenas com alt + enter!')">
+
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                mouse: {
+                    x: 0,
+                    y: 0
+                }
+            },
+            methods: {
+                somar() {
+                    this.count++;
+                },
+                mouseMove(ev) {
+                    this.mouse.x = ev.clientX;
+                    this.mouse.y = ev.clientY;
+                },
+                alert(msg) {
+                    alert(msg);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
