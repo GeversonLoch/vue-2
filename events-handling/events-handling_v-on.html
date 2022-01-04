@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VueJS - Eventos</title>
+    <title>VueJS - Manipulação de eventos (v-on)</title>
 </head>
 
 <body>
+
+    <!-- https://v3.vuejs.org/guide/events.html#listening-to-events -->
+
     <div id="app">
 
         <p>{{ count }}</p>
@@ -19,9 +22,9 @@
         <hr>
         <br>
 
-        <p v-on:mousemove="mouseMove">
+        <p @mousemove="mouseMove">
             <span>MouseX: {{ mouse.x }} - MouseY: {{ mouse.y }}</span>
-            <b v-on:mousemove.stop>[Modificador de Evento '.stop']</b>
+            <b @mousemove.stop>[Modificador de Evento '.stop']</b>
         </p>
 
         <br>
